@@ -1,22 +1,22 @@
 function [State1Prob,State2Prob,State3Prob,plotstimulus,llike,x]=...
   threestateanalysis(tbl,x0,optionsolve,boots,optionboots,numofworkers,ci);
 
-[xbest,llike,xboot]=multithreshsolver(tbl,x0,optionsolve,boots,optionbootsk,...
-    numofworkers);
+[xbest,llike,xboot]=multithreshsolver(tbl,x0,optionsolve,boots,optionboots,...
+  numofworkers);
 
  plotstimulus=1:10:5000;
  plotstimulus=plotstimulus';
 
  %Get some values for the 50% and 95% confidence estimates
 
- [State1Prob.best,State2Prob.best,State3Prob.best]=multinomialthresholddist(plotstimulus,...
-    1e4,xbest(1),xbest(2),xbest(3),xbest(4),xbest(5),xbest(6));
+[State1Prob.best,State2Prob.best,State3Prob.best]=multinomialthresholddist(plotstimulus,...
+   1e4,xbest(1),xbest(2),xbest(3),xbest(4),xbest(5),xbest(6));
 
- for ind=1:boots
-   [State1Probboot(ind,:),State2Probboot(ind,:),State3Probboot(ind,:)=multinomialthresholddist(...
-      plotstimulus,1e4,xboot(ind,1),xboot(ind,2),xboot(ind,3),xboot(ind,4),...
-      xboot(ind,5),xboot(ind,6));
- endfor
+%for ind=1:boots
+%  [State1Probboot(ind,:),State2Probboot(ind,:),State3Probboot(ind,:)=...
+%    multinomialthresholddist(plotstimulus,1e4,xboot(ind,1),xboot(ind,2),xboot(ind,3),xboot(ind,4),...
+%     xboot(ind,5),xboot(ind,6));
+%endfor
 
  %Find the confidence intervals
 

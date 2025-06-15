@@ -1,5 +1,5 @@
 function [State1Prob,State2Prob,State3Prob]= multinomialthresholddist(stimulus,...
-    monts,x1,s1,x2,s2,x3,s3);
+    monts,mustartstate2,sigmastartstate2,muendstate2,sigmaendstate2,mustartstate3,sigmastartstate3);
 
   stimulussize=size(stimulus);
   montssize=size(monts);

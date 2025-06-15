@@ -1,4 +1,4 @@
-function tbl=multinombootstrap(stimulus,monts,mustartstate2,sigmastartstate2...
+function tbl=multinombootstrap(stimulus,monts,mustartstate2,sigmastartstate2,...
   muendstate2,sigmaendstate2,mustartstate3,sigmastartstate3)
 
   stimulussize=size(stimulus);
@@ -33,7 +33,7 @@ function tbl=multinombootstrap(stimulus,monts,mustartstate2,sigmastartstate2...
 
   result=State1+State2+State3;
 
-  result=categorical(result);
+  %result=categorical(result);
 
   for ind=1:monts
     tbl{ind}.stimulus=stimulus;

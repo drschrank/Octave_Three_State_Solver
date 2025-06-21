@@ -1,4 +1,4 @@
-function [xbest,llike,xboot]=multithreshsolver(tbl,x0,optionsolve,boots,optionboots,...
+function [x,llike,xboot]=multithreshsolver(tbl,x0,optionsolve,boots,optionboots,...
   numofworkers)
 
   stimulus=tbl.stimulus;
@@ -29,6 +29,10 @@ bootbl=multinombootstrap(stimulus,boots,x(1),x(2),x(3),x(4),x(5),x(6));
 
 x0=x;
 
+%Preallocate xboot
+
+xboot=nan(boots,6)
+
 %Setup parralell pool for MATLAB only
 %pool=parpool(numofworkers);
 
@@ -56,7 +60,7 @@ parfor (ind=1:boots,numofworkers);
     remap(x(4)),remap(x(5)),remap(x(6)),stimulus,...
     State1index,State2index,State3index);
 
-  [x,llike,exitflag]=fminsearch(minfunc,x0,optionboots);
+  [xboot(ind,:),~,exitflag]=fminsearch(minfunc,x0,optionboots);
 
   if ~exitflag
     warning('xboot not found for this interation. Delete from list.');

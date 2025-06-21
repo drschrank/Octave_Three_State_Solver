@@ -72,9 +72,10 @@ parfor (ind=1:boots,numofworkers);
 endparfor
 
 %Remove any xboots that weren't found because we got to the end of our
-%max interations before converging
+%max iterations before converging.  Delete entire rows that contain NaN
+%values while preserving the matrix shape of xboot.
 
-xboot(isnan(xboot))=[];
+xboot(any(isnan(xboot),2),:) = [];
 
 %Clean up parallel objects
 

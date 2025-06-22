@@ -31,7 +31,7 @@ x0=x;
 
 %Preallocate xboot
 
-xboot=nan(boots,6)
+xboot=nan(boots,6);
 
 %Setup parralell pool for MATLAB only
 %pool=parpool(numofworkers);

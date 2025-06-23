@@ -13,7 +13,7 @@ optionsolve=optimset('MaxFunEvals',1e5,'MaxIter',500,'TolFun',1,'TolX',1,...
 x0=[log(700),0.2,log(500),0.4,log(1700),0.1];
 
 %Setup bootstrap options
-boots=100;
+boots=1e4;
 optionboots=optimset('MaxFunEvals',1e5,'MaxIter',500,'TolFun',1,'TolX',1);
 numofworkers=8;
 ci=0.95;
